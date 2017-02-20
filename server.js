@@ -12,6 +12,7 @@ var connection = mysql.createConnection({
   database : 'db6c7047166ebc4d82a382a72000f9d811'
 
 });
+connection.query("create table messages ( userid int not null,message nvarchar(1000) not null,times timestamp primary key not null,constraint KEY_1 foreign key (userid) references users(userid));");
 connection.query("drop table messages");
 io.on('connection', function(socket){
   console.log(socket.id);
