@@ -12,7 +12,6 @@ var connection = mysql.createConnection({
   database : 'db6c7047166ebc4d82a382a72000f9d811'
 
 });
-connection.query("ALTER TABLE messages ALTER COLUMN message nvarchar");
 io.on('connection', function(socket){
   console.log(socket.id);
   console.log("we are connected");
