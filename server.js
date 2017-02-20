@@ -5,7 +5,13 @@ http.listen(process.env.PORT||8080);
 var routes = require('./app/routes/index.js');
 var io = require('socket.io')(http);
 var mysql = require('mysql');
-var connection = mysql.createConnection("mysql://zfdodilksacomvmw:JmJ5cWyk8HVaPK36MGCzHs4uqUfDqAoePX6FbqNgW6JGGzRfgi45wcrqqpNpQ33F@6c704716-6ebc-4d82-a382-a72000f9d811.mysql.sequelizer.com/db6c7047166ebc4d82a382a72000f9d811");
+var connection = mysql.createConnection({
+  host     : '6c704716-6ebc-4d82-a382-a72000f9d811.mysql.sequelizer.com',
+  user     : 'zfdodilksacomvmw',
+  password : 'JmJ5cWyk8HVaPK36MGCzHs4uqUfDqAoePX6FbqNgW6JGGzRfgi45wcrqqpNpQ33F',
+  database : 'db6c7047166ebc4d82a382a72000f9d811'
+
+});
 io.on('connection', function(socket){
   console.log(socket.id);
   console.log("we are connected");
