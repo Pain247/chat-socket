@@ -18,7 +18,7 @@ module.exports= function(app){
     res.sendFile(path+'/public/index.html');
   });
   app.get('/conversation',function(req,res){
-    connection.query("select u.username, m.message from users as u, messages as m where u.userid = m.userid",function(err,results,field){
+    connection.query("select u.username, m.message from users as u, messages as m where u.userid = m.userid order by m.times",function(err,results,field){
       res.send(results);
     });
     });
