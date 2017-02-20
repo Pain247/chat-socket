@@ -20,7 +20,7 @@ io.on('connection', function(socket){
     connection.query("select userid from users where username='"+msg+"'", function(err, results, fields){
       console.log(results);
       if(results===undefined||results.length===0){
-        connection.query("insert into users(username) value('"+msg+"')");
+        connection.query("insert into users(username) value(N'"+msg+"')");
       }
     });
     io.emit("receive-join",msg);
@@ -32,7 +32,7 @@ io.on('connection', function(socket){
          console.log("Wrong user!");
       }
       else{
-        connection.query("insert into messages value('"+results[0].userid+"','"+msg.message+"',now())");
+        connection.query("insert into messages value('"+results[0].userid+"',N'"+msg.message+"',now())");
         io.emit("receive-message",msg);
       }
     });
