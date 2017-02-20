@@ -1,0 +1,34 @@
+<html ng-app="chatApp">
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+ <div ng-controller="userCreationCtrl as user">
+     <input ng-model="user.username" type="text" ng-keyup="$event.keyCode == 13 ? user.createUser(user.username):null">&nbsp;<button type = "submit" ng-click="user.createUser(user.username)">Join</button>
+     <br/><div ng-hide = "value">
+      <ul>
+        <li ng-repeat="u in user.users track by $index" >
+          <strong>{{u}}</strong>&nbsp;đã tham gia cuộc trò chuyện
+        </li>
+      </ul>
+     </div>
+ </div>
+ <div ng-controller="chatCtrl as chat">
+    <h3> Chat Demo </h3>
+    <ul>
+      <li ng-repeat="message in chat.messages track by $index">
+        <strong>{{message.username}}</strong>&nbsp;:&nbsp;<span>{{message.message}}</span>
+      </li>
+    </ul>
+    <input ng-model="chat.newMessage" type="text" ng-keyup="$event.keyCode == 13 ? chat.send():null">&nbsp;<button ng-click="chat.send()" type="submit">Send</button>
+ </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src="controllers/app.js"></script>
+<script type="text/javascript" src="controllers/user-creation-controller.js"></script>
+<script src="controllers/chat-controller.js"></script>
+
+</script>
+</html>
