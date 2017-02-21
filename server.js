@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
 
 });
 /*connection.query("create table messages ( userid int not null,message nvarchar(1000) not null,times timestamp primary key not null,constraint KEY_1 foreign key (userid) references users(userid));");*/
-/*connection.query("alter table messages drop primary key");*/
+connection.query("delete from messages where message = 'Cái đm -_-' ");
 io.on('connection', function(socket){
   console.log(socket.id);
   console.log("we are connected");
